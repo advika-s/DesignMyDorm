@@ -1,0 +1,75 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <meta charset="utf-16">
+        <title>DesignMyDorm</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400|Mulish:400,700' rel='stylesheet'>
+        <link rel="stylesheet" href="static/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="static/favicon.png">
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <h1 class="logo">DesignMyDorm</h1>
+                <nav>
+                    <ul>
+                        <li><a class="active" href="/home">Home</a></li>
+                        <li><a class="active" href="/initload">See Saved Designs</a></li>
+                        <li><a class="active" href="/scale">Start a New Design</a></li>
+                        <li><a class="active" href="/logoutcas">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <h2><strong>Logged in as {{username}}</strong></h2>
+
+        <div>
+            <button id="bed">Bed</button>
+            <button id="desk">Desk</button>
+            <button id="dresser">Dresser</button>
+            <button id="wardrobe">Wardrobe</button>
+            <button id="bookshelf">Bookshelf</button>
+            <button id="rotateClockwise">Rotate Clockwise</button>
+            <button id="rotateCC">Rotate Counter-Clockwise</button>
+            <button id="deleteOne">Delete</button>
+        </div>
+
+        <div>
+            <span>Width (in.): <input type="text" id="customW"
+                required pattern=".*\S.*"
+                title="At least one non-white-space char"></span>
+            <span>Height (in.): <input type="text" id="customH"
+                required pattern=".*\S.*"
+                title="At least one non-white-space char"></span>
+            <button id="custom" style="margin-left: 16px">Add Custom Furniture</button>
+        </div>
+
+        <br>
+        <div id="stage-parent"><div id="container" class="container"></div></div>
+        <br>
+        <br>
+        <div>
+            <button id="export">Download as PNG</button>
+            <button id="deleteAll">Delete All Furniture</button>
+        </div>
+        <div>
+            <span>Design Name: <input type="text" id="savename"
+                required pattern=".*\S.*"
+                title="Save names can only contain 15 ASCII characters"></span>
+            <button id="save">Save This Design</button>
+            <info>
+                <p> <i>Note: Using an existing save name will overwrite the previous design.</i>
+                </p>
+            </info>
+        </div>
+        
+        <script src="https://unpkg.com/konva@8.3.13/konva.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="static/index.js" scale={{scale}} img_url={{img_url}} save_name="{{save_name}}" json_string={{json_string}}></script>
+        <script defer src="static/landing.js"></script>
+    </body>
+</html>

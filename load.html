@@ -1,0 +1,70 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <meta charset="utf-16">
+        <title>DesignMyDorm</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400|Mulish:400,700' rel='stylesheet'>
+        <link rel="stylesheet" href="static/index.css">
+        <link rel="icon" type="image/x-icon" href="static/favicon.png">
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <h1 class="logo">DesignMyDorm</h1>
+                <nav>
+                    <ul>
+                        <li><a class="active" href="/home">Home</a></li>
+                        <li><a href="/instructions">Instructions</a></li>
+                        <li><a class="active" href="/logoutcas">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <h2><strong>Logged in as {{username}}</strong></h2>
+
+        <form action="/scale" method="get">
+            <button>Start a New Design</button>
+        </form>
+
+        <h3><strong>Below are {{username}}'s saved floor plans:</strong></h3>
+        {% if rooms|length == 0 %}
+            <p>There are no floor plans previously saved by {{username}}.</p>
+        {% endif %}
+
+        <div id="Saves">
+            {% for room in rooms: %}
+                <div class="savedDesign">
+                <img src="static/icon.png" width="240" height="180">
+                <h4>{{room}}</h4>
+                <button onclick="shareRoom(this.value)" value="{{ url_for('share', sharename=room) }}">Share</button>
+                <a href="{{ url_for('load', save_name=room, shared=False) }}"><button>Edit</button></a>
+                <a href="{{ url_for('delete', save_name=room) }}"><button>Delete</button></a>
+                </div>
+            {% endfor %}
+        </div></p>
+
+        <br>
+        <h3><strong>Below are floor plans shared with {{username}}:</strong></h3>
+        {% if shared_rooms|length == 0 %}
+            <p>There are no floor plans shared with {{username}}.</p>
+        {% endif %}
+
+        <div id="Saves">
+            {% for room in shared_rooms: %}
+                <div class="savedDesign">
+                <img src="static/icon.png" width="240" height="180">
+                <h4>{{room}}</h4>
+                <a href="{{ url_for('load', save_name=room, shared=True) }}"><button>Edit</button></a>
+                <a href="{{ url_for('sharedelete', save_name=room) }}"><button>Delete</button></a>
+                </div>
+            {% endfor %}
+        </div></p>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="static/load.js"></script>
+        <script defer src="static/landing.js"></script>
+    </body>
+</html>
