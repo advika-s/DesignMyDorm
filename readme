@@ -1,5 +1,8 @@
-# designmydorm
-COS333 Project
+interactive GUI web app with drag-drop and automatic scaling features that allows users to design their dorm furniture layouts. 
+Users can save and share their layouts by logging in through CAS.
+
+Worked in a group of 4 to create this web application.
+
 https://www.w3schools.com/js/js_cookies.asp
 https://docs.sqlalchemy.org/en/13/core/connections.html
 https://stackoverflow.com/questions/5292372/how-to-pass-parameters-to-a-script-tag
